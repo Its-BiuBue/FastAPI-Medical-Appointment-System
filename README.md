@@ -18,23 +18,23 @@ A robust, RESTful backend API built with **FastAPI** to manage doctor availabili
 * **Pydantic** (Data validation)
 * **Uvicorn** (ASGI server)
 
-#Start the FastAPI server:
+# Start the FastAPI server:
 
 uvicorn main:app --reload
 
 
-#Access the API Documentation:
+# Access the API Documentation:
 Open your browser and navigate to the interactive Swagger UI to test the endpoints:
 👉 http://127.0.0.1:8000/docs 
 
-#🧩 Data Models (Pydantic)
+# 🧩 Data Models (Pydantic)
 The application uses strict Pydantic models for data validation:
 
 AppointmentRequest: Validates incoming appointment bookings (patient name, doctor ID, date, reason, appointment type, and senior citizen status).
 
 NewDoctor: Validates the creation of a new doctor profile (name, specialization, fee, experience years, and availability).
 
-#🛠️ Helper Functions
+# 🛠️ Helper Functions
 Core business logic is abstracted into plain Python helper functions:
 
 find_doctor(doctor_id): Safely queries the mock database for a specific doctor.
@@ -43,8 +43,8 @@ calculate_fee(base_fee, appointment_type, senior_citizen): Calculates dynamic pr
 
 filter_doctors_logic(...): Handles complex, multi-parameter filtering using is not None checks.
 
-#🔀 API Endpoints Reference
-##🏥 Doctors (Fixed Routes)
+# 🔀 API Endpoints Reference
+## 🏥 Doctors (Fixed Routes)
 
 GET / - Welcome message.
 
@@ -80,7 +80,7 @@ PUT /doctors/{doctor_id} - Update a doctor's fee or availability.
 
 DELETE /doctors/{doctor_id} - Delete a doctor (Blocked if the doctor has active appointments).
 
-##📅 Appointments
+## 📅 Appointments
 GET /appointments - Retrieve all appointments.
 
 GET /appointments/active - Retrieve only scheduled or confirmed appointments.
@@ -95,7 +95,7 @@ GET /appointments/by-doctor/{doctor_id} - View appointment history for a specifi
 
 POST /appointments - Book a new appointment. (Automatically calculates fees and marks the doctor as unavailable).
 
-##🔄 Multi-Step Workflow (Appointment Lifecycle)
+## 🔄 Multi-Step Workflow (Appointment Lifecycle)
 POST /appointments/{appointment_id}/confirm - Changes status to confirmed.
 
 POST /appointments/{appointment_id}/complete - Changes status to completed.
